@@ -56,7 +56,7 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
 <script type="text/javascript">
- /*var HttpClient = function() {
+ var HttpClient = function() {
  this.get = function(aUrl, aCallback) {
  var anHttpRequest = new XMLHttpRequest();
  anHttpRequest.onreadystatechange = function() { 
@@ -73,10 +73,10 @@
  var response1 = JSON.parse(response);
  // alert(response);
  document.getElementById("name").innerHTML = response1.name;
- document.getElementById("positif").innerHTML = response1.value;
+ document.getElementById("positif").innerHTML = response1.positif;
  document.getElementById("sembuh").innerHTML = response1.sembuh;
  document.getElementById("meninggal").innerHTML = response1.meninggal;
- }); */
+ }); 
  </script>
 
 </head>
@@ -94,7 +94,7 @@
 
 
 <script type="text/javascript">
-    function callback(response1) {
+/*    function callback(response1) {
         document.getElementById("name").innerHTML = response1.name;
         document.getElementById("positif").innerHTML = response1.positif;
         document.getElementById("sembuh").innerHTML = response1.sembuh;
@@ -113,7 +113,7 @@
         error: function (err) {
             // handle your error logic here
         }
-    });
+    });*/
 
 </script>
 </center>
