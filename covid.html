@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-
 <style>
 .button {
-  background-color: #D18700;
+  background-color: rgb(0, 209, 80);
   border: none;
   color: white;
   padding: 15px 32px;
@@ -53,32 +51,6 @@
   cursor: pointer;
 }
 </style>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-
-<script type="text/javascript">
- var HttpClient = function() {
- this.get = function(aUrl, aCallback) {
- var anHttpRequest = new XMLHttpRequest();
- anHttpRequest.onreadystatechange = function() { 
- if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
- aCallback(anHttpRequest.responseText);
- }
- anHttpRequest.open( "GET", aUrl, true ); 
- anHttpRequest.send(); 
- }
- }
- var theurl='https://api.kawalcorona.com/indonesia';
- var client = new HttpClient();
- client.get(theurl, function(response) { 
- var response1 = JSON.parse(response);
- // alert(response);
- document.getElementById("name").innerHTML = response1.name;
- document.getElementById("positif").innerHTML = response1.positif;
- document.getElementById("sembuh").innerHTML = response1.sembuh;
- document.getElementById("meninggal").innerHTML = response1.meninggal;
- }); 
- </script>
-
 </head>
 <body bgcolor="#C5C5C5">
  
@@ -86,12 +58,42 @@
  
 
  <div class="mypanel"></div>
+<table>
+  <tr><th>Negara</th>
+    <th>Positif Corona</th>
+    <th>Sembuh</th>
+    <th>Meninggal</th>
+  </tr>
+  
+<tr>
+  <td><button class="button" id="name"></button></td>
+  <td><button class="button1" id="positif"></button></td>
+  <td><button class="button2" id="sembuh"></button></td>
+  <td><button class="button3" id="meninggal"></button></td>
+</tr>
 
-<button class="button" id="name"></button>
-<button class="button1" id="positif"></button>
-<button class="button2" id="sembuh"></button>
-<button class="button3" id="meninggal"></button>
+</table>
 
+
+<script>
+  
+
+  const api_url = 'https://api.kawalcorona.com/indonesia/';
+
+  async function getData(){
+    const response1 = await fetch(api_url);
+    const data = await response1.json();
+    console.log(data[0].name);
+    document.getElementById("name").innerHTML = data[0].name;
+    document.getElementById("positif").innerHTML = data[0].positif;
+    document.getElementById("sembuh").innerHTML = data[0].sembuh;
+    document.getElementById("meninggal").innerHTML = data[0].meninggal;
+
+  }
+  getData();
+
+  
+</script>
 </center>
 </body>
 </html>
