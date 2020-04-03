@@ -1,78 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-.button {
-  background-color: rgb(0, 209, 80);
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-.button1 {
-  background-color: #43A6C6;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-.button2 {
-  background-color: #D10000;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-.button3 {
-  background-color: #750000;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<style type="text/css">
+  .tftable {
+    font-size:12px;
+    color:#333333;
+    width:50%;
+    border-width: 1px;
+    border-color: #729ea5;
+    border-collapse: collapse;
+    }
+  .tftable th {
+    font-size:12px;
+    background-color:#acc8cc;
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #729ea5;
+    text-align:left;
+    }
+  .tftable tr {
+    background-color:#ffffff;}
+
+  .tftable td {
+    font-size:12px;
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #729ea5;
+    }
+  .tftable tr:hover {
+    background-color:#ffff99;
+    }
+  </style>
+  
+  
+  
+
+
 </head>
 <body bgcolor="#fffff">
  
-<center><h2>Coronavirus Indonesia Live Update</h2>
+<center><h2>Update Data Covid-19 di Indonesia</h2>
  
 
- <div class="mypanel"></div>
-<table>
-  <tr><th>Negara</th>
-    <th>Positif</th>
-    <th>Sembuh</th>
-    <th>Meninggal</th>
-  </tr>
-  
-<tr>
-  <td><button class="button" id="name"></button></td>
-  <td><button class="button2" id="positif"></button></td>
-  <td><button class="button1" id="sembuh"></button></td>
-  <td><button class="button3" id="meninggal"></button></td>
-</tr>
+ 
+    <table id="idTable" class="tftable">
+        <tr>
+          <th>Negara</th>
+          <th>Positif</th>
+          <th>Sembuh</th>
+          <th>Meninggal</th>
+        </tr>
+        
+      <tr>
+        <td><h3 id="name"></h3></td>
+        <td><h3 id="positif"></h3></td>
+        <td><h3 id="sembuh"></h3></td>
+        <td><h3 id="meninggal"></h3></td>
+      </tr>
+      
+      </table>
 
-</table>
+
 
 
 <script>
@@ -83,7 +78,7 @@
   async function getData(){
     const response1 = await fetch(api_url);
     const data = await response1.json();
-    console.log(data[0].name);
+    console.log(data);
     document.getElementById("name").innerHTML = data[0].name;
     document.getElementById("positif").innerHTML = data[0].positif;
     document.getElementById("sembuh").innerHTML = data[0].sembuh;
@@ -94,6 +89,47 @@
 
   
 </script>
+
+
+
+<br><br>
+<table id="table1" class="tftable" border="1">
+    
+        <tr>
+          <th>Provinsi</th>
+          <th>Positif</th>
+          <th>Sembuh</th>
+          <th>Meninggal</th>
+        </tr>
+
+
+</table>
+
+
+
+
 </center>
+<script>
+$(document).ready(function(){
+  $.getJSON("https://api.kawalcorona.com/indonesia/provinsi/", function(data){
+    var covid_data = '';
+    $.each(data, function(key, value){
+      covid_data += '<tr>'
+      covid_data += '<td>'+value.attributes.Provinsi+'</td>';
+      covid_data += '<td>'+value.attributes.Kasus_Posi+'</td>';
+      covid_data += '<td>'+value.attributes.Kasus_Semb+'</td>';
+      covid_data += '<td>'+value.attributes.Kasus_Meni+'</td>';
+      covid_data += '</tr>'
+    });
+    $('#table1').append(covid_data);
+    $('#table1').DataTable({
+      'paging'      : true,
+    });
+  });
+
+});
+
+
+</script>
 </body>
 </html>
