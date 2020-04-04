@@ -80,7 +80,6 @@
   async function getData(){
     const response1 = await fetch(api_url);
     const data = await response1.json();
-    console.log(data);
     document.getElementById("name").innerHTML = data[0].name;
     document.getElementById("positif").innerHTML = data[0].positif;
     document.getElementById("sembuh").innerHTML = data[0].sembuh;
@@ -130,9 +129,6 @@ $(document).ready(function(){
       covid_data += '</tr>'
     });
     $('#table1').append(covid_data);
-    $('#table1').DataTable({
-      'paging'      : true,
-    });
   });
 
 });
