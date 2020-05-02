@@ -1,0 +1,22 @@
+{
+ "name": "@YoseApero",
+ "short_name": "YoseApero",
+ "description": "A Curriculum Vitae of Yose Apero",
+ "lang": "en-US",
+ "dir": "ltr",
+ "theme_color": "#838C95",
+ "start_url": ".",
+ "background_color": "#fff",
+ "display": "standalone",
+ "orientation": "portrait-primary",
+ "icons": [{
+   "src": "images/logo.png",
+   "sizes": "72x72",
+   "type": "image/png"
+  }, 
+  {
+   "src": "images/logo.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }]
+}
