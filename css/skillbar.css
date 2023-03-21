@@ -57,10 +57,28 @@
 }
 
 .complete .skill-bar-percent {
-  color: #333;
+  color: #fff;
 }
 
 .complete.server .skill-bar-percent {
+  color: #333;
+}
+.complete.php .skill-bar-percent {
+  color: #333;
+}
+.complete.javascript .skill-bar-percent {
+  color: #333;
+}
+.complete.html5 .skill-bar-percent {
+  color: #333;
+}
+.complete.css .skill-bar-percent {
+  color: #333;
+}
+.complete.jquery .skill-bar-percent {
+  color: #333;
+}
+.complete.wordpress .skill-bar-percent {
   color: #333;
 }
 
