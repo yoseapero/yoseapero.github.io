@@ -31,10 +31,11 @@
 }
 
 .skill-name:after {
-  background-color: #a5a5a8;
+  background-color: #0000;
   content: '';
   display: block;
   height: 1rem;
+  margin-bottom:10px;
   position: relative;
   top: 2px;
   /*top: 1rem;*/
