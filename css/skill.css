@@ -31,7 +31,7 @@
 }
 
 .skill-name:after {
-  background-color: #0000;
+  background-color: #a5a5a8;
   content: '';
   display: block;
   height: 1rem;
